@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unjunk'd | Nourish Your Body, Clear Your Mind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:wght@400;600&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* --- LIGHT MODE VARIABLES --- */
+            --bg-main: #FFFBF2;
+            --bg-dots: #EADBC0;
+            --text-main: #333333;
+            --card-bg: #ffffff;
+            --header-bg: #FFFBF2;
+            
+            /* Accents */
+            --accent-green: #6B8E23;
+            --accent-orange: #FF8C42;
+            --accent-yellow: #FFD700;
+            --border-color: #EADBC0;
+            
+            /* Facts/Myths */
+            --myth-red: #d63031;
+            --myth-header-bg: #ffe0e0;
+            --fact-green: #27ae60;
+            
+            /* Shadows */
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-card: 5px 5px 0px var(--border-color);
+        }
+
+        /* --- DARK MODE VARIABLES --- */
+        body.dark-mode {
+            --bg-main: #1a1a1a;
+            --bg-dots: #333333;
+            --text-main: #EADBC0;
+            --card-bg: #2d2d2d;
+            --header-bg: #1a1a1a;
+            
+            --accent-green: #8cb858;
+            --accent-orange: #FF8C42;
+            --accent-yellow: #FFD700;
+            --border-color: #444444;
+            
+            --myth-red: #ff6b6b;
+            --myth-header-bg: #3d1010;
+            --fact-green: #2ecc71;
+            
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --shadow-card: 5px 5px 0px #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-main);
+            background-image: radial-gradient(var(--bg-dots) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            font-weight: 800;
+        }
+
+        .hand-drawn {
+            font-family: 'Architects Daughter', cursive;
+            color: var(--accent-green);
+            font-size: 1.1rem;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            text-align: center;
+            padding: 15px 20px;
+            background: var(--header-bg);
+            border-bottom: 3px dashed var(--border-color);
+            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 50;
+        }
+
+        /* Toggle Button */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            z-index: 60;
+        }
+        .theme-toggle-btn svg { width: 24px; height: 24px; fill: currentColor; transition: transform 0.5s ease; }
+        .theme-toggle-btn:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 var(--accent-yellow); }
+        .theme-toggle-btn:active svg { transform: rotate(180deg); }
+
+        .logo-container { position: relative; display: inline-block; z-index: 10; }
+        
+        .logo img { height: 50px; width: auto; display: block; }
+
+        .tagline {
+            font-size: 1.3rem; font-weight: 700; color: var(--accent-green); 
+            margin: 10px 0 15px; position: relative; z-index: 10;
+        }
+
+        /* --- TABS --- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            background: var(--card-bg); 
+            border: 2px solid var(--accent-green);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--accent-green);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .tab-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 4px 4px 0 var(--accent-yellow);
+            z-index: 101; 
+        }
+        .tab-btn.active {
+            background-color: var(--accent-green); color: white;
+            box-shadow: inset 0px 3px 5px rgba(0,0,0,0.2); transform: translateY(1px);
+        }
+
+        /* --- Main Content --- */
+        main { max-width: 1100px; margin: 0 auto; padding: 50px 20px; min-height: 60vh; }
+
+        .content-section {
+            display: none; opacity: 0; transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        .content-section.active { display: block; opacity: 1; transform: translateY(0); }
+
+        .section-header-wrapper {
+            text-align: center; margin-bottom: 40px; position: relative;
+            display: inline-block; left: 50%; transform: translateX(-50%);
+        }
+        .section-header-wrapper::before {
+            content: ''; position: absolute; width: 120%; height: 100%;
+            background-color: rgba(234, 219, 192, 0.5); z-index: -1; left: -10%; top: 10%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(-2deg);
+        }
+        body.dark-mode .section-header-wrapper::before { background-color: rgba(255, 255, 255, 0.1); }
+        .section-title { font-size: 2.5rem; color: var(--text-main); position: relative; }
+
+        /* --- INTERACTIVE CARD STYLES --- */
+        .hero-banner, .stat-box, .split-card, .myth-card, .big-myth-container, .solution-item, .avatar, .timeline-card, .recipe-card {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+        }
+
+        .hero-banner:hover, .stat-box:hover, .split-card:hover, .myth-card:hover, 
+        .big-myth-container:hover, .solution-item:hover, .avatar:hover, .timeline-card:hover, .recipe-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-yellow);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* --- Specific Components --- */
+        
+        /* Hero */
+        .hero-banner {
+            display: flex; align-items: center; background: var(--card-bg);
+            border-radius: 30px; overflow: hidden; box-shadow: var(--shadow-soft);
+            margin-bottom: 50px; border: 3px solid var(--accent-green);
+        }
+        .hero-text { flex: 1; padding: 30px; } 
+        .hero-image {
+            flex: 1; height: 300px; background-size: cover; background-position: center;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .highlight-quote {
+            font-size: 1.4rem; font-weight: 600; color: var(--accent-green);
+            font-style: italic; border-left: 5px solid var(--accent-orange);
+            padding-left: 20px; margin-bottom: 20px;
+        }
+
+        /* Stats */
+        .stats-row { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
+        .stat-box {
+            text-align: center; background: var(--accent-green); color: white;
+            padding: 25px; border-radius: 20px; flex: 1 1 200px;
+            box-shadow: 5px 5px 0 var(--text-main); border: 3px solid transparent;
+        }
+        .stat-box:hover { border-color: var(--accent-yellow); }
+        .stat-number { font-size: 3rem; font-weight: 800; display: block; line-height: 1; margin-bottom: 10px; font-family: 'Poppins', sans-serif; }
+
+        /* Issues */
+        .split-card {
+            display: flex; border-radius: 20px; overflow: hidden; background: var(--card-bg);
+            box-shadow: var(--shadow-soft); margin-bottom: 30px; border: 3px solid var(--border-color);
+        }
+        .split-img { flex: 1; min-height: 280px; background-size: cover; background-position: center; }
+        
+        #malnutrition-img, #ncd-img { min-height: 150px; flex: 0.6; }
+
+        .split-content { flex: 1.5; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .issue-tag {
+            display: inline-block; padding: 5px 15px; background: var(--accent-orange);
+            color: white; border-radius: 20px; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px;
+        }
+
+        /* Myths */
+        .myth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 30px; }
+        .myth-card {
+            background: var(--card-bg); border-radius: 15px; box-shadow: var(--shadow-soft);
+            overflow: hidden; border: 3px solid var(--border-color);
+        }
+        .myth-header {
+            background-color: var(--myth-header-bg); color: var(--myth-red); padding: 20px;
+            font-weight: 800; font-family: 'Poppins', sans-serif; border-bottom: 2px solid var(--myth-red);
+            font-size: 1.1rem;
+        }
+        .fact-body { padding: 20px; background-color: var(--card-bg); }
+        .fact-label { display: block; color: var(--fact-green); font-weight: 800; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 5px; }
+
+        .big-myth-container {
+            background: var(--card-bg); border-radius: 20px; padding: 40px; margin-bottom: 50px;
+            border-left: 10px solid var(--myth-red); box-shadow: var(--shadow-card);
+            border-top: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 3px solid transparent;
+        }
+
+        /* Solutions */
+        .solution-item {
+            display: flex; align-items: flex-start; margin-bottom: 30px; background: var(--card-bg);
+            padding: 25px; border-radius: 15px; box-shadow: var(--shadow-card);
+            border-left: 8px solid var(--accent-orange);
+            border-top: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 3px solid transparent;
+        }
+        .solution-number {
+            font-size: 3rem; font-weight: 800; color: var(--accent-orange);
+            margin-right: 25px; line-height: 1; font-family: 'Architects Daughter', cursive;
+        }
+
+        /* Impact Timeline */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 4px;
+            background: var(--accent-green); border-radius: 2px; opacity: 0.3;
+        }
+        .timeline-card {
+            background: var(--card-bg); border: 3px solid var(--border-color);
+            border-left: 6px solid var(--accent-green); padding: 25px; margin-bottom: 30px;
+            margin-left: 50px; border-radius: 15px; position: relative; box-shadow: var(--shadow-card);
+        }
+        .timeline-card::before {
+            content: ''; position: absolute; left: -39px; top: 30px; width: 16px; height: 16px;
+            background: var(--accent-orange); border-radius: 50%; border: 3px solid var(--card-bg);
+        }
+        .timeline-phase {
+            font-family: 'Architects Daughter', cursive; color: var(--accent-orange);
+            font-size: 1rem; margin-bottom: 5px; display: block;
+        }
+
+        /* --- RECIPES STYLES --- */
+        .category-header {
+            width: 100%;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-green);
+            color: var(--accent-green);
+            font-size: 1.8rem;
+        }
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .recipe-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+        }
+        .recipe-title {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .recipe-meta {
+            font-size: 0.9rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .view-btn {
+            background: transparent;
+            border: 2px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .recipe-card:hover .view-btn {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: auto;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 700px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: modalPop 0.3s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @keyframes modalPop {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        .close-btn {
+            color: var(--text-main);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .close-btn:hover { color: var(--accent-orange); }
+        
+        #modal-title { color: var(--accent-green); font-size: 2rem; margin-bottom: 5px; line-height: 1.2; }
+        #modal-time { color: var(--accent-orange); font-weight: 700; font-family: 'Poppins', sans-serif; margin-bottom: 25px; font-size: 1.1rem; border-bottom: 2px dashed var(--border-color); padding-bottom: 15px; display: inline-block;}
+        
+        .modal-section { margin-bottom: 25px; }
+        .modal-section h4 { color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .modal-section ul, .modal-section ol { padding-left: 20px; }
+        .modal-section li { margin-bottom: 8px; color: var(--text-main); }
+        
+        .chef-note {
+            background: rgba(107, 142, 35, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-green);
+            font-style: italic;
+            color: var(--text-main);
+        }
+        .chef-note strong { color: var(--accent-green); display: block; margin-bottom: 5px; font-style: normal; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* Team */
+        .team-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; }
+        .team-member { text-align: center; }
+        .avatar {
+            width: 100px; height: 100px; background-color: var(--accent-green); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; font-family: 'Poppins', sans-serif; font-weight: 700;
+            margin: 0 auto 15px; border: 4px solid var(--card-bg); box-shadow: var(--shadow-soft);
+        }
+        .team-member h4 { font-size: 1.2rem; margin-top: 10px; }
+
+        footer {
+            background-color: #111; color: white; text-align: center;
+            padding: 50px 20px; margin-top: auto;
+        }
+        .footer-links a { 
+            color: var(--accent-orange); text-decoration: none; font-weight: 700;
+            border-bottom: 2px dotted var(--accent-orange); transition: all 0.3s;
+        }
+        .footer-links a:hover { color: var(--accent-yellow); border-bottom-style: solid; }
+
+        @media (max-width: 768px) {
+            .hero-banner { flex-direction: column; }
+            .hero-image { width: 100%; height: 250px; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
+            .section-title { font-size: 2rem; }
+            .split-card { flex-direction: column; }
+            .split-img { min-height: 250px; } 
+            #malnutrition-img, #ncd-img { min-height: 200px; }
+            .tab-btn { padding: 10px 15px; font-size: 0.9rem; flex: 1 1 45%; }
+            .split-content { padding: 30px; }
+            .theme-toggle-btn { position: relative; top: 0; right: 0; margin-bottom: 20px; }
+            .timeline::before { left: 10px; }
+            .timeline-card { margin-left: 30px; padding: 20px; }
+            .timeline-card::before { left: -29px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Recipe Title</h2>
+            <div id="modal-time">20 Mins</div>
+            
+            <div class="modal-section">
+                <h4>Ingredients</h4>
+                <ul id="modal-ingredients">
+                    </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>Preparation</h4>
+                <ol id="modal-steps">
+                    </ol>
+            </div>
+            
+            <div class="chef-note">
+                <strong>Chef's Note</strong>
+                <span id="modal-note">Some advice here.</span>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+            <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+
+        <div class="logo-container">
+            <img src="unjunk'd 1.svg" alt="Unjunk'd Logo" class="logo">
+        </div>
+        <p class="tagline">Nourish Your Body, Clear Your Mind.</p>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'home')">Home & Mission</button>
+            <button class="tab-btn" onclick="openTab(event, 'issues')">The Health Issues</button>
+            <button class="tab-btn" onclick="openTab(event, 'myth')">Fact vs Myth</button>
+            <button class="tab-btn" onclick="openTab(event, 'solutions')">Our Solutions</button>
+            <button class="tab-btn" onclick="openTab(event, 'impact')">Impact Journey</button>
+            <button class="tab-btn" onclick="openTab(event, 'recipes')">Healthy Recipes</button>
+            <button class="tab-btn" onclick="openTab(event, 'team')">The Team</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="home" class="content-section active">
+            <div class="section-header-wrapper">
+                <h2 class="section-title">The Mission Statement</h2>
+            </div>
+            
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <p class="highlight-quote">
+                        "Addressing concerns in youth regarding malnutrition... We focus primarily on diet, while also exploring exercise and other health factors."
+                    </p>
+                    <p>India faces a dual challenge: <strong>Undernutrition</strong> (lack of food) and <strong>Overnutrition</strong> (junk food/obesity). From rural tribal groups to urban workers relying on processed snacks, our nutrition is in crisis.</p>
+                </div>
+                <div class="hero-image" style="background-image: url('misson.jpeg');"></div>
+            </div>
+            
+            <div class="section-header-wrapper" style="margin-top: 60px;">
+                <h3 class="section-title" style="font-size: 2rem;">Why This Matters</h3>
+            </div>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="stat-number">52%</span>
+                    <p>of adolescent girls are chronically undernourished.</p>
+                </div>
+                <div class="stat-box" style="background-color: var(--accent-orange);">
+                    <span class="stat-number">101st</span>
+                    <p>India's rank on the Global Hunger Index (out of 116).</p>
+                </div>
+                <div class="stat-box" style="background-color: #D66D75;">
+                    <span class="stat-number">1 in 7</span>
+                    <p>Indians suffer from mental health issues linked to diet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="issues" class="content-section">
+             <div class="section-header-wrapper">
+                <h2 class="section-title">Critical Health Concerns</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">It isn't just about being hungry. It's about what we are eating and what it does to our bodies.</p>
+
+            <div class="split-card">
+                <div class="split-img" style="background-image: url('anemia.jpeg');"></div>
+                <div class="split-content">
+                    <span class="issue-tag" style="background-color: #D66D75;">Deficiency</span>
+                    <h3>Anemia</h3>
+                    <p><strong>What:</strong> Low red blood cells/iron causing fatigue.</p>
+                    <p><strong>Stat:</strong> 58.5% of children under five and 53% of women are anemic.</p>
+                    <p class="hand-drawn" style="margin-top: 10px;">Fix it with green leafy veggies & beans!</p>
+                </div>
+            </div>
+
+            <div class="split-card" style="flex-direction: row-reverse;">
+                 <div class="split-img" id="malnutrition-img" style="background-image: url('mal.avif');"></div>
+                <div class="split-content">
+                    <span class="issue-tag">Systemic Issue</span>
+                    <h3>Malnutrition (Stunting)</h3>
+                    <p><strong>What:</strong> Children facing long-term physical and cognitive challenges due to lack of food.</p>
+                    <p><strong>Stat:</strong> 31% of children under five in Odisha are stunted.</p>
+                </div>
+            </div>
+
+            <div class="split-card">
+                <div class="split-img" id="ncd-img" style="background-image: url('dis.webp');"></div>
+                <div class="split-content">
+                     <span class="issue-tag" style="background-color: var(--text-main);">Lifestyle Disease</span>
+                    <h3>Non-Communicable Diseases</h3>
+                    <p><strong>What:</strong> Diabetes, Heart Disease, Obesity caused by processed diets.</p>
+                    <p><strong>Risk:</strong> India is projected to have the highest number of diabetes cases by 2045.</p>
+                </div>
+            </div>
+
+             <div class="split-card" style="flex-direction: row-reverse;">
+                 <div class="split-img" style="background-image: url('met.webp');"></div>
+                <div class="split-content">
+                     <span class="issue-tag" style="background-color: #8e44ad;">Well-being</span>
+                    <h3>Mental Health Connection</h3>
+                    <p>Your brain needs fuel! Poor diets weaken memory & focus. Eating whole grains, fruits, and Omega-3s reduces risks of depression and anxiety.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="myth" class="content-section">
+            <div class="section-header-wrapper">
+                <h2 class="section-title">Dispelling Misconceptions</h2>
+            </div>
+            
+            <div class="big-myth-container">
+                <h3 style="color: var(--myth-red); margin-bottom: 15px;">MYTH: "Nutritional diseases only affect the underprivileged."</h3>
+                <div style="padding-left: 20px; border-left: 4px solid var(--fact-green);">
+                    <span class="fact-label">THE REALITY</span>
+                    <p>Nutritional imbalance is persistent amongst the middle and higher class as well. This is driven by <strong>Unhealthy Affluence</strong> (access to fast food), <strong>Sedentary Urban Lifestyles</strong>, and <strong>High Stress</strong> environments. Wealth does not guarantee health if the dietary choices are poor.</p>
+                </div>
+            </div>
+
+            <div class="section-header-wrapper" style="margin-top: 40px;">
+                <h3 class="section-title" style="font-size: 1.8rem;">Common Pseudoscience Myths</h3>
+            </div>
+
+            <div class="myth-grid">
+                <div class="myth-card">
+                    <div class="myth-header">MYTH: "Detox diets cleanse your body of toxins."</div>
+                    <div class="fact-body"><span class="fact-label">FACT</span><p>Your body has its own highly efficient detox system: the liver and kidneys. No juice cleanse or tea can do what your organs already do.</p></div>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-header">MYTH: "Carbohydrates make you fat."</div>
+                    <div class="fact-body"><span class="fact-label">FACT</span><p>Carbs are the body's primary energy source. The issue is <em>refined</em> carbs. Complex carbs like whole grains are essential.</p></div>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-header">MYTH: "Brown sugar is healthier than white sugar."</div>
+                    <div class="fact-body"><span class="fact-label">FACT</span><p>Brown sugar is simply white sugar with molasses. To your body, sugar is sugar, and both spike insulin levels equally.</p></div>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-header">MYTH: "Supplements can replace real food."</div>
+                    <div class="fact-body"><span class="fact-label">FACT</span><p>Whole foods provide a synergy of fiber, antioxidants, and micronutrients that pills cannot replicate.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="solutions" class="content-section">
+             <div class="section-header-wrapper">
+                <h2 class="section-title">The Unjunked Action Plan</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 40px;">We need community-driven innovation. Here is what we propose:</p>
+
+            <div class="solution-item">
+                <div class="solution-number">01.</div>
+                <div>
+                    <h3>Nutritious Office Lunches</h3>
+                    <p>Stop the microwave meals! Offices should partner with suppliers for fresh, balanced lunches and use cafeteria boards to educate employees on <em>why</em> it matters.</p>
+                </div>
+            </div>
+            <div class="solution-item">
+                <div class="solution-number">02.</div>
+                <div>
+                    <h3>Better School Meal Plans</h3>
+                    <p>School food is often chosen for convenience, not health. We must overhaul school menus to ensure options are actually nutritious, not just filling.</p>
+                </div>
+            </div>
+            <div class="solution-item">
+                <div class="solution-number">03.</div>
+                <div>
+                    <h3>Advertise "Real" Food</h3>
+                    <p>You see ads for chips and instant noodles everywhere. We need aggressive advertising for healthy, whole foods to influence society's choices.</p>
+                </div>
+            </div>
+            <div class="solution-item">
+                <div class="solution-number">04.</div>
+                <div>
+                    <h3>Accessible Food Delis</h3>
+                    <p>Create "Unjunked Delis" providing nutritious, cooked food at fair prices for busy urban workers and subsidized costs for rural families.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="impact" class="content-section">
+            <div class="section-header-wrapper">
+                <h2 class="section-title">Our Impact Journey</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-card">
+                    <span class="timeline-phase">Phase 1: Research & Prep</span>
+                    <h3>Project Initiation</h3>
+                    <p>We conducted a project survey to gain insights into the general public's eating habits, designed awareness posters, and compiled our initial research findings.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="timeline-phase">Phase 2: Awareness</span>
+                    <h3>Spreading the Word</h3>
+                    <p>We pasted our designed posters around the school campus to bring immediate awareness to the issue of malnutrition and junk food consumption.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="timeline-phase">Phase 3: Solution Design</span>
+                    <h3>Recipe Development</h3>
+                    <p>We researched commonly consumed unhealthy foods and developed "Unjunked" recipe cards for delicious, healthy alternatives, testing them to ensure quality.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="timeline-phase">Phase 4: Workshop Execution</span>
+                    <h3>Grade 6 Healthy Eating Activity</h3>
+                    <p>We successfully conducted a healthy eating workshop with the Grade 6 class. This involved interactive activities to teach younger students about nutritious choices in a fun, engaging way.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="timeline-phase">Phase 5: Community Outreach</span>
+                    <h3>Events & Stalls</h3>
+                    <p>We managed stalls at the <strong>Cambridge Fest</strong> and <strong>Unwind</strong> events. We spoke directly with parents and students about the topic, handing out our healthy eating brochures and recipe cards to the wider community.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="recipes" class="content-section">
+            <div class="section-header-wrapper">
+                <h2 class="section-title">18 Healthy Recipes</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 40px;">Click on any recipe to see the full cooking instructions.</p>
+
+            <h3 class="category-header">Non-Vegetarian</h3>
+            <div class="recipe-grid">
+                <div class="recipe-card" onclick="openRecipe(1)">
+                    <div>
+                        <h3 class="recipe-title">Chicken Sausage & Spinach Frittata</h3>
+                        <p class="recipe-meta">Breakfast | 30 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(2)">
+                    <div>
+                        <h3 class="recipe-title">Grilled Chicken Caesar Salad</h3>
+                        <p class="recipe-meta">Lunch | 15 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(3)">
+                    <div>
+                        <h3 class="recipe-title">Tuna Salad Lettuce Wraps</h3>
+                        <p class="recipe-meta">Lunch | 10 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(4)">
+                    <div>
+                        <h3 class="recipe-title">Garlic Butter Shrimp with Cauliflower Rice</h3>
+                        <p class="recipe-meta">Dinner | 20 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(5)">
+                    <div>
+                        <h3 class="recipe-title">Beef Stir-Fry with Broccoli</h3>
+                        <p class="recipe-meta">Dinner | 25 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(6)">
+                    <div>
+                        <h3 class="recipe-title">Sheet Pan Salmon & Asparagus</h3>
+                        <p class="recipe-meta">Dinner | 20 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+            </div>
+
+            <h3 class="category-header">Vegan</h3>
+            <div class="recipe-grid">
+                <div class="recipe-card" onclick="openRecipe(7)">
+                    <div>
+                        <h3 class="recipe-title">Chia Seed Pudding</h3>
+                        <p class="recipe-meta">Breakfast | 5 Mins Prep</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(8)">
+                    <div>
+                        <h3 class="recipe-title">Tofu Scramble with Turmeric</h3>
+                        <p class="recipe-meta">Breakfast | 15 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(9)">
+                    <div>
+                        <h3 class="recipe-title">Mediterranean Falafel Bowl</h3>
+                        <p class="recipe-meta">Lunch | 10 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(10)">
+                    <div>
+                        <h3 class="recipe-title">Spicy Lentil Soup</h3>
+                        <p class="recipe-meta">Lunch | 35 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(11)">
+                    <div>
+                        <h3 class="recipe-title">Thai Red Curry with Tofu</h3>
+                        <p class="recipe-meta">Dinner | 25 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(12)">
+                    <div>
+                        <h3 class="recipe-title">Sweet Potato & Black Bean Chili</h3>
+                        <p class="recipe-meta">Dinner | 40 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+            </div>
+
+            <h3 class="category-header">Vegetarian</h3>
+            <div class="recipe-grid">
+                <div class="recipe-card" onclick="openRecipe(13)">
+                    <div>
+                        <h3 class="recipe-title">Cottage Cheese with Pineapple & Mint</h3>
+                        <p class="recipe-meta">Breakfast | 3 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(14)">
+                    <div>
+                        <h3 class="recipe-title">Huevos Rancheros</h3>
+                        <p class="recipe-meta">Breakfast | 15 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(15)">
+                    <div>
+                        <h3 class="recipe-title">Paneer Tikka Wrap</h3>
+                        <p class="recipe-meta">Lunch | 15 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(16)">
+                    <div>
+                        <h3 class="recipe-title">Greek Salad with Feta Block</h3>
+                        <p class="recipe-meta">Lunch | 10 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(17)">
+                    <div>
+                        <h3 class="recipe-title">Vegetable Stir-Fry with Omelet Ribbons</h3>
+                        <p class="recipe-meta">Dinner | 20 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(18)">
+                    <div>
+                        <h3 class="recipe-title">Spinach & Ricotta Lasagna Roll-ups</h3>
+                        <p class="recipe-meta">Dinner | 40 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="team" class="content-section">
+             <div class="section-header-wrapper">
+                <h2 class="section-title">Meet the Changemakers</h2>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="avatar">AR</div>
+                    <h4>Anubhav Ranjan</h4>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">AM</div>
+                    <h4>Ayanansh Mohanty</h4>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">MS</div>
+                    <h4>Mehr Seal</h4>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">VS</div>
+                    <h4>Vivaan Seal</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3>JOIN THE MOVEMENT</h3>
+            <div class="footer-links">
+                <p>Email: <a href="mailto:unjunked.team@gmail.com">unjunked.team@gmail.com</a></p>
+                <p>Instagram: <a href="https://instagram.com/unjunkd.team">@unjunkd.team</a></p>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Unjunk'd Project. Let's eat better together.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Minimalist SVG Icons
+        const moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        
+        const sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+        // Set initial icon
+        document.getElementById("theme-icon").outerHTML = moonIcon;
+
+        function openTab(evt, tabName) {
+            var i;
+            var x = document.getElementsByClassName("content-section");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+
+        // --- DARK MODE LOGIC ---
+        function toggleTheme() {
+            var body = document.body;
+            var btn = document.getElementById("theme-toggle");
+            
+            body.classList.toggle("dark-mode");
+            
+            if (body.classList.contains("dark-mode")) {
+                btn.innerHTML = sunIcon;
+            } else {
+                btn.innerHTML = moonIcon;
+            }
+        }
+
+        // --- RECIPE DATA & MODAL LOGIC ---
+        const recipes = [
+            // NON-VEG
+            {
+                id: 1,
+                title: "Chicken Sausage & Spinach Frittata",
+                time: "10m Prep | 20m Cook",
+                ingredients: ["3 Chicken sausages (sliced into coins)", "6 Eggs (beaten)", "1 cup Spinach (chopped)", "1/2 Onion (diced)", "1/2 cup Milk or water", "Salt, Pepper, Chili flakes"],
+                steps: ["Preheat oven to 375°F (190°C).", "In an oven-safe skillet, sauté the onion and sausage coins until browned (5 mins).", "Add spinach and cook until wilted (1 min).", "Whisk eggs, milk, salt, pepper, and chili flakes in a bowl. Pour mixture into the skillet.", "Let it set on stove for 2 mins, then transfer to oven.", "Bake for 15-18 mins until fluffy."],
+                note: "Great for meal prep. Slice it like a pizza and store in the fridge for up to 4 days."
+            },
+            {
+                id: 2,
+                title: "Grilled Chicken Caesar Salad (Light)",
+                time: "15m Total",
+                ingredients: ["1 Chicken breast (grilled and sliced)", "4 cups Romaine lettuce (chopped)", "1/4 cup Parmesan cheese (shaved)", "1/2 cup Croutons (whole wheat)", "Dressing: 2 tbsp Greek yogurt, 1 tsp Dijon mustard, 1 tbsp Lemon juice, 1 tsp Olive oil, Garlic powder"],
+                steps: ["Season chicken breast with salt/pepper and grill until cooked through. Slice into strips.", "In a jar, shake yogurt, mustard, lemon juice, oil, and garlic powder to make dressing.", "Toss the lettuce with the dressing.", "Top with chicken, parmesan, and croutons."],
+                note: "Using Greek yogurt instead of mayo cuts the calories in the dressing by half while keeping the protein high."
+            },
+            {
+                id: 3,
+                title: "Tuna Salad Lettuce Wraps",
+                time: "10m Total",
+                ingredients: ["1 can Tuna (in water, drained)", "1 tbsp Mayonnaise (or Greek yogurt)", "1 stalk Celery (finely diced)", "1 tsp Red onion (finely minced)", "1 tsp Lemon juice", "4-5 Large Lettuce leaves"],
+                steps: ["Drain the tuna completely.", "Mix tuna, mayo, celery, onion, lemon juice, salt, and pepper.", "Lay out lettuce leaves.", "Scoop tuna mixture into the center of each leaf. Wrap and eat."],
+                note: "Ultra low-carb. If you want a kick, add a few drops of hot sauce or sriracha to the mix."
+            },
+            {
+                id: 4,
+                title: "Garlic Butter Shrimp with Cauliflower Rice",
+                time: "10m Prep | 10m Cook",
+                ingredients: ["200g Shrimp (peeled and deveined)", "2 cups Cauliflower rice", "2 tbsp Butter", "3 cloves Garlic (minced)", "1 tbsp Parsley (chopped)", "1/2 Lemon (juiced)"],
+                steps: ["Melt 1 tbsp butter in a pan. Sauté cauliflower rice for 5 mins until tender. Remove.", "Melt remaining butter. Add garlic and cook for 30 secs.", "Add shrimp in single layer. Cook 2 mins per side.", "Squeeze lemon over shrimp and sprinkle with parsley.", "Serve over cauliflower rice."],
+                note: "Shrimp cooks very fast; don't walk away or it will get rubbery."
+            },
+            {
+                id: 5,
+                title: "Beef Stir-Fry with Broccoli",
+                time: "15m Prep | 10m Cook",
+                ingredients: ["200g Beef steak (sliced thin)", "2 cups Broccoli florets", "1 Bell pepper (sliced)", "Sauce: 3 tbsp Soy sauce, 1 tbsp Ginger (grated), 1 tbsp Honey, 1 tsp Sesame oil"],
+                steps: ["Mix sauce ingredients in a bowl.", "Heat wok with oil on high heat.", "Sear beef strips quickly (2 mins). Remove.", "Add broccoli and peppers. Add splash of water, cover and steam 3 mins.", "Add beef back, pour sauce, and toss for 1 minute."],
+                note: "Freezing the beef for 20 mins before slicing makes it easier to cut into very thin strips."
+            },
+            {
+                id: 6,
+                title: "Sheet Pan Salmon & Asparagus",
+                time: "5m Prep | 15m Cook",
+                ingredients: ["2 Salmon fillets", "1 bunch Asparagus (woody ends snapped)", "1 tbsp Olive oil", "1 Lemon (sliced)", "Garlic powder, Salt, Pepper"],
+                steps: ["Preheat oven to 400°F (200°C).", "Line baking sheet. Place salmon on one side, asparagus on other.", "Drizzle oil, season with garlic powder, salt, pepper.", "Place lemon slices on top of salmon.", "Bake 12-15 mins until salmon flakes."],
+                note: "Rich in Omega-3 fatty acids which are great for brain health. Minimal cleanup required."
+            },
+            // VEGAN
+            {
+                id: 7,
+                title: "Chia Seed Pudding",
+                time: "5m Prep | 4hr Chill",
+                ingredients: ["3 tbsp Chia seeds", "1 cup Almond milk", "1 tsp Maple syrup", "1/2 tsp Vanilla extract", "Toppings: Berries, nuts"],
+                steps: ["Mix chia seeds, milk, syrup, and vanilla in a jar. Stir vigorously.", "Let sit for 5 mins, stir again.", "Refrigerate for at least 4 hours (or overnight).", "Top with fresh fruit before eating."],
+                note: "High in fiber. Make 3 jars at once on Sunday night for breakfast Mon-Wed."
+            },
+            {
+                id: 8,
+                title: "Tofu Scramble with Turmeric",
+                time: "15m Total",
+                ingredients: ["1 block Firm Tofu (crumbled)", "1/2 tsp Turmeric", "2 tbsp Nutritional yeast", "1 Tomato (chopped)", "1 cup Spinach", "Salt & Pepper"],
+                steps: ["Heat pan with oil. Add crumbled tofu.", "Sprinkle turmeric, yeast, salt, pepper. Stir to coat.", "Cook 5-7 mins to evaporate moisture.", "Add tomato and spinach. Cook 2 mins until spinach wilts."],
+                note: "Turmeric is anti-inflammatory. Serve with a slice of toasted sourdough."
+            },
+            {
+                id: 9,
+                title: "Mediterranean Falafel Bowl",
+                time: "10m Prep",
+                ingredients: ["3-4 Falafels (store-bought/frozen)", "1/2 cup Hummus", "1/2 cup Cucumber (diced)", "1/2 cup Cherry tomatoes (halved)", "Mixed greens", "Dressing: Tahini, lemon, water"],
+                steps: ["Warm falafels according to package.", "Create a bed of greens in a bowl.", "Arrange cucumber, tomatoes, and falafels.", "Add dollop of hummus.", "Drizzle with tahini dressing."],
+                note: "A great assembly only meal if you buy good quality frozen falafel."
+            },
+            {
+                id: 10,
+                title: "Spicy Lentil Soup",
+                time: "10m Prep | 25m Cook",
+                ingredients: ["1 cup Red lentils (rinsed)", "1 Onion (chopped)", "1 Carrot (chopped)", "3 cups Vegetable broth", "1 tsp Cumin", "1/2 tsp Chili powder"],
+                steps: ["Sauté onion and carrot until soft (5 mins).", "Add cumin and chili powder; stir 1 min.", "Add lentils and broth. Boil then simmer.", "Simmer 20 mins until thickened.", "Finish with lemon squeeze."],
+                note: "Red lentils cook very fast and don't need soaking. This soup freezes perfectly."
+            },
+            {
+                id: 11,
+                title: "Thai Red Curry with Tofu",
+                time: "10m Prep | 15m Cook",
+                ingredients: ["1 block Tofu (cubed)", "2 tbsp Red curry paste (vegan)", "1 can Coconut milk", "1 cup Green beans", "1 Red bell pepper (sliced)"],
+                steps: ["Fry curry paste in oil for 1 min.", "Pour in coconut milk and stir.", "Add tofu, beans, and pepper.", "Simmer gently 10-12 mins until veggies are tender.", "Serve over jasmine rice."],
+                note: "Taste the sauce—if too spicy add sugar; if too bland add salt."
+            },
+            {
+                id: 12,
+                title: "Sweet Potato & Black Bean Chili",
+                time: "10m Prep | 30m Cook",
+                ingredients: ["2 Sweet potatoes (diced small)", "1 can Black beans (drained)", "1 can Diced tomatoes", "1 Onion (diced)", "1 tbsp Chili powder", "1 tsp Cumin"],
+                steps: ["Sauté onion in a large pot.", "Add sweet potatoes and spices. Cook 2 mins.", "Add tomatoes and 1/2 cup water. Boil then simmer.", "Cover and cook 20-25 mins until potatoes soft.", "Stir in black beans and heat through."],
+                note: "Extremely filling due to the fiber combination of beans and potatoes."
+            },
+            // VEGETARIAN
+            {
+                id: 13,
+                title: "Cottage Cheese with Pineapple & Mint",
+                time: "3m Total",
+                ingredients: ["1 cup Cottage cheese", "1/2 cup Fresh pineapple chunks", "1 tsp Chia seeds", "Fresh Mint leaves (chopped)"],
+                steps: ["Scoop cottage cheese into a bowl.", "Top with pineapple chunks.", "Sprinkle with chia seeds and fresh mint."],
+                note: "Very high protein (approx 25g) without any cooking."
+            },
+            {
+                id: 14,
+                title: "Huevos Rancheros",
+                time: "15m Total",
+                ingredients: ["2 Corn tortillas", "2 Eggs", "1/2 cup Black beans (warmed)", "1/2 cup Salsa", "1/4 Avocado (sliced)", "Feta cheese"],
+                steps: ["Lightly toast tortillas in dry pan.", "Fry eggs (sunny side up).", "Spread beans on tortillas.", "Top with egg, salsa, avocado, and cheese."],
+                note: "Savory and satisfying. Corn tortillas are usually lower calorie than flour ones."
+            },
+            {
+                id: 15,
+                title: "Paneer Tikka Wrap",
+                time: "15m Total",
+                ingredients: ["100g Paneer (cubed)", "1 tbsp Tandoori masala", "1 Whole wheat tortilla/roti", "Sliced onions and peppers", "1 tbsp Mint yogurt chutney"],
+                steps: ["Toss paneer in masala.", "Pan-fry paneer, onions, and peppers on high heat 5 mins.", "Warm the tortilla.", "Spread chutney, add paneer mix, and roll tight."],
+                note: "If you don't have paste, mix yogurt, chili powder, turmeric, and garam masala."
+            },
+            {
+                id: 16,
+                title: "Greek Salad with Feta Block",
+                time: "10m Total",
+                ingredients: ["1 Cucumber (chopped)", "2 Tomatoes (chopped)", "1/2 Red onion (sliced thin)", "1/3 cup Kalamata olives", "1 slice Feta cheese", "Olive oil & Oregano"],
+                steps: ["Combine cucumber, tomatoes, onion, and olives.", "Place slab of feta on top.", "Drizzle generously with olive oil and sprinkle oregano.", "Add pinch of salt."],
+                note: "The juice at the bottom is 'liquid gold'—dip bread in it!"
+            },
+            {
+                id: 17,
+                title: "Vegetable Stir-Fry with Omelet Ribbons",
+                time: "20m Total",
+                ingredients: ["2 Eggs (beaten)", "2 cups Mixed veggies", "2 cups Cooked Rice (day-old)", "1 tbsp Soy Sauce", "1 tsp Sesame oil", "Green onions"],
+                steps: ["Make a thin omelet in pan. Remove, roll, and slice into ribbons.", "Stir-fry veggies on high heat 4 mins.", "Add rice and break up clumps.", "Add sauces. Stir in egg ribbons at the end."],
+                note: "Using day-old cold rice prevents the dish from becoming mushy."
+            },
+            {
+                id: 18,
+                title: "Spinach & Ricotta Lasagna Roll-ups",
+                time: "15m Prep | 25m Cook",
+                ingredients: ["6 Lasagna noodles (boiled)", "1 cup Ricotta cheese", "1 cup Spinach (thawed/dried)", "1 cup Marinara sauce", "1/2 cup Mozzarella cheese"],
+                steps: ["Preheat oven to 375°F (190°C).", "Mix ricotta, spinach, salt, pepper.", "Spread cheese mix on noodles. Roll them up.", "Place in baking dish. Top with marinara and mozzarella.", "Bake 20-25 mins."],
+                note: "Easier to serve than traditional lasagna and easier to portion control."
+            }
+        ];
+
+        function openRecipe(id) {
+            const recipe = recipes.find(r => r.id === id);
+            if (!recipe) return;
+
+            // Fill Data
+            document.getElementById('modal-title').innerText = recipe.title;
+            document.getElementById('modal-time').innerText = recipe.time;
+            document.getElementById('modal-note').innerText = recipe.note;
+
+            // Fill Lists
+            const ingList = document.getElementById('modal-ingredients');
+            const stepList = document.getElementById('modal-steps');
+            
+            ingList.innerHTML = "";
+            stepList.innerHTML = "";
+
+            recipe.ingredients.forEach(ing => {
+                let li = document.createElement("li");
+                li.innerText = ing;
+                ingList.appendChild(li);
+            });
+
+            recipe.steps.forEach(step => {
+                let li = document.createElement("li");
+                li.innerText = step;
+                stepList.appendChild(li);
+            });
+
+            // Show Modal
+            document.getElementById('recipeModal').style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById('recipeModal').style.display = "none";
+        }
+
+        // Close modal if clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('recipeModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
