@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unjunk'd | Nourish Your Body, Clear Your Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Unjunk'd | Nourish Your Body, Clear Your Mind</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:wght@400;600&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
@@ -481,6 +480,15 @@
                 text-align: center;
             }
             
+            /* Team Grid Mobile Fix */
+            .team-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            
             .logo-container { max-width: 250px; }
             .logo img { max-height: 60px; }
             .theme-toggle-btn { position: absolute; top: 15px; right: 15px; }
@@ -496,6 +504,7 @@
             .section-title { font-size: 1.8rem; }
             .hero-text { padding: 20px; }
             .stat-number { font-size: 2rem; }
+            .tab-btn { flex: 1 1 100%; } /* Stack buttons fully on very small screens */
             .tagline { font-size: 1rem; }
         }
     </style>
