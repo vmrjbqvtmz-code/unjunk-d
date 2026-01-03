@@ -67,6 +67,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* Responsive Typography */
         h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
             color: var(--text-main);
@@ -88,6 +89,11 @@
             transition: background-color 0.3s ease;
             position: relative;
             z-index: 50;
+            /* Flex layout for better scaling */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         /* Toggle Button */
@@ -113,13 +119,30 @@
         .theme-toggle-btn:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 var(--accent-yellow); }
         .theme-toggle-btn:active svg { transform: rotate(180deg); }
 
-        .logo-container { position: relative; display: inline-block; z-index: 10; }
+        .logo-container { 
+            position: relative; 
+            display: inline-block; 
+            z-index: 10; 
+            max-width: 100%; /* Prevent overflow */
+        }
         
-        .logo img { height: 50px; width: auto; display: block; }
+        .logo img { 
+            height: auto; 
+            max-height: 60px; /* Controlled height */
+            width: auto; 
+            max-width: 100%; 
+            display: block; 
+            margin: 0 auto;
+        }
 
         .tagline {
-            font-size: 1.3rem; font-weight: 700; color: var(--accent-green); 
-            margin: 10px 0 15px; position: relative; z-index: 10;
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: var(--accent-green); 
+            margin: 10px 0 15px; 
+            position: relative; 
+            z-index: 10;
+            width: 100%;
         }
 
         /* --- TABS --- */
@@ -129,7 +152,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 10px;
-            max-width: 900px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
             position: relative;
@@ -148,6 +171,8 @@
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
             position: relative;
+            flex: 0 1 auto; /* Allow shrink/grow */
+            white-space: nowrap;
         }
         
         .tab-btn:hover { 
@@ -161,7 +186,7 @@
         }
 
         /* --- Main Content --- */
-        main { max-width: 1100px; margin: 0 auto; padding: 50px 20px; min-height: 60vh; }
+        main { max-width: 1100px; margin: 0 auto; padding: 50px 20px; min-height: 60vh; width: 100%; }
 
         .content-section {
             display: none; opacity: 0; transform: translateY(20px);
@@ -172,6 +197,7 @@
         .section-header-wrapper {
             text-align: center; margin-bottom: 40px; position: relative;
             display: inline-block; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px;
         }
         .section-header-wrapper::before {
             content: ''; position: absolute; width: 120%; height: 100%;
@@ -179,7 +205,7 @@
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(-2deg);
         }
         body.dark-mode .section-header-wrapper::before { background-color: rgba(255, 255, 255, 0.1); }
-        .section-title { font-size: 2.5rem; color: var(--text-main); position: relative; }
+        .section-title { font-size: 2.5rem; color: var(--text-main); position: relative; word-wrap: break-word; }
 
         /* --- INTERACTIVE CARD STYLES --- */
         .hero-banner, .stat-box, .split-card, .myth-card, .big-myth-container, .solution-item, .avatar, .timeline-card, .recipe-card {
@@ -241,7 +267,7 @@
         }
 
         /* Myths */
-        .myth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 30px; }
+        .myth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
         .myth-card {
             background: var(--card-bg); border-radius: 15px; box-shadow: var(--shadow-soft);
             overflow: hidden; border: 3px solid var(--border-color);
@@ -301,9 +327,10 @@
             color: var(--accent-green);
             font-size: 1.8rem;
         }
+        /* Changed minmax to 260px for better mobile fit */
         .recipe-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -373,7 +400,7 @@
             margin: auto;
             padding: 40px;
             border: 1px solid var(--border-color);
-            width: 90%;
+            width: 90%; /* Responsive Width */
             max-width: 700px;
             border-radius: 20px;
             position: relative;
@@ -398,7 +425,7 @@
         }
         .close-btn:hover { color: var(--accent-orange); }
         
-        #modal-title { color: var(--accent-green); font-size: 2rem; margin-bottom: 5px; line-height: 1.2; }
+        #modal-title { color: var(--accent-green); font-size: 2rem; margin-bottom: 5px; line-height: 1.2; word-wrap: break-word; }
         #modal-time { color: var(--accent-orange); font-weight: 700; font-family: 'Poppins', sans-serif; margin-bottom: 25px; font-size: 1.1rem; border-bottom: 2px dashed var(--border-color); padding-bottom: 15px; display: inline-block;}
         
         .modal-section { margin-bottom: 25px; }
@@ -437,6 +464,7 @@
         }
         .footer-links a:hover { color: var(--accent-yellow); border-bottom-style: solid; }
 
+        /* --- MOBILE MEDIA QUERIES --- */
         @media (max-width: 768px) {
             .hero-banner { flex-direction: column; }
             .hero-image { width: 100%; height: 250px; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
@@ -446,10 +474,26 @@
             #malnutrition-img, #ncd-img { min-height: 200px; }
             .tab-btn { padding: 10px 15px; font-size: 0.9rem; flex: 1 1 45%; }
             .split-content { padding: 30px; }
-            .theme-toggle-btn { position: relative; top: 0; right: 0; margin-bottom: 20px; }
+            
+            .theme-toggle-btn { position: absolute; top: 15px; right: 20px; } /* Keep toggle cornered */
+            
             .timeline::before { left: 10px; }
             .timeline-card { margin-left: 30px; padding: 20px; }
             .timeline-card::before { left: -29px; }
+            
+            /* Modal Adjustments */
+            .modal-content { padding: 20px; width: 95%; }
+            #modal-title { font-size: 1.6rem; }
+            
+            /* Text Adjustments */
+            .tagline { font-size: 1rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title { font-size: 1.8rem; }
+            .hero-text { padding: 20px; }
+            .stat-number { font-size: 2.5rem; }
+            .tab-btn { font-size: 0.8rem; padding: 8px 12px; }
         }
     </style>
 </head>
@@ -956,7 +1000,7 @@
                 id: 5,
                 title: "Beef Stir-Fry with Broccoli",
                 time: "15m Prep | 10m Cook",
-                ingredients: ["200g Beef steak (sliced thin)", "2 cups Broccoli florets", "1 Bell pepper (sliced)", "Sauce: 3 tbsp Soy sauce, 1 tbsp Ginger (grated), 1 tbsp Honey, 1 tsp Sesame oil"],
+                ingredients: ["200g Beef steak (sliced thin)", "2 cups Broccoli florets", "1 Bell pepper (sliced)", "Sauce: 3 tbsp Soy sauce, 1 tbsp Ginger (grated)", "1 tbsp Honey, 1 tsp Sesame oil"],
                 steps: ["Mix sauce ingredients in a bowl.", "Heat wok with oil on high heat.", "Sear beef strips quickly (2 mins). Remove.", "Add broccoli and peppers. Add splash of water, cover and steam 3 mins.", "Add beef back, pour sauce, and toss for 1 minute."],
                 note: "Freezing the beef for 20 mins before slicing makes it easier to cut into very thin strips."
             },
