@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Unjunk'd | Nourish Your Body, Clear Your Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unjunk'd | Nourish Your Body, Clear Your Mind</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:wght@400;600&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
@@ -72,11 +73,7 @@
             font-weight: 800;
         }
 
-        /* Responsive Images */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+        img { max-width: 100%; height: auto; }
 
         .hand-drawn {
             font-family: 'Architects Daughter', cursive;
@@ -98,7 +95,6 @@
             align-items: center;
         }
 
-        /* Toggle Button */
         .theme-toggle-btn {
             position: absolute;
             top: 15px;
@@ -125,15 +121,14 @@
             display: inline-block; 
             z-index: 10;
             width: 100%;
-            /* Ensure container doesn't force width */
             max-width: 90vw; 
         }
         
         .logo img { 
             height: auto; 
             width: auto; 
-            max-height: 70px; /* Standard desktop height */
-            max-width: 100%;  /* Ensures it shrinks on phone */
+            max-height: 70px; 
+            max-width: 100%;  
             display: block; 
             margin: 0 auto;
         }
@@ -151,7 +146,7 @@
         .tabs {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Allows wrapping on phone */
+            flex-wrap: wrap; 
             gap: 10px;
             margin-top: 10px;
             width: 100%;
@@ -171,7 +166,6 @@
             transition: all 0.3s;
             box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
             font-size: 0.9rem;
-            /* Flex grow allows buttons to fill space nicely on mobile */
             flex: 0 1 auto;
         }
         
@@ -185,7 +179,7 @@
         main { 
             max-width: 1100px; 
             margin: 0 auto; 
-            padding: 30px 15px; /* Reduced padding for mobile */
+            padding: 30px 15px; 
             min-height: 60vh; 
         }
 
@@ -209,7 +203,7 @@
         body.dark-mode .section-header-wrapper::before { background-color: rgba(255, 255, 255, 0.1); }
         .section-title { font-size: 2.2rem; color: var(--text-main); position: relative; word-wrap: break-word;}
 
-        /* --- INTERACTIVE CARD STYLES --- */
+        /* --- COMPONENTS --- */
         .hero-banner, .stat-box, .split-card, .myth-card, .big-myth-container, .solution-item, .avatar, .timeline-card, .recipe-card {
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid transparent;
@@ -224,8 +218,6 @@
             z-index: 10;
         }
 
-        /* --- Specific Components --- */
-        
         /* Hero */
         .hero-banner {
             display: flex; align-items: center; background: var(--card-bg);
@@ -259,9 +251,7 @@
             box-shadow: var(--shadow-soft); margin-bottom: 30px; border: 3px solid var(--border-color);
         }
         .split-img { flex: 1; min-height: 250px; background-size: cover; background-position: center; }
-        
         #malnutrition-img, #ncd-img { min-height: 150px; flex: 0.6; }
-
         .split-content { flex: 1.5; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         .issue-tag {
             display: inline-block; padding: 5px 15px; background: var(--accent-orange);
@@ -269,7 +259,6 @@
         }
 
         /* Myths */
-        /* Changed minmax to 280px for better fit on narrow phones */
         .myth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
         .myth-card {
             background: var(--card-bg); border-radius: 15px; box-shadow: var(--shadow-soft);
@@ -282,7 +271,6 @@
         }
         .fact-body { padding: 20px; background-color: var(--card-bg); }
         .fact-label { display: block; color: var(--fact-green); font-weight: 800; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 5px; }
-
         .big-myth-container {
             background: var(--card-bg); border-radius: 20px; padding: 30px; margin-bottom: 40px;
             border-left: 8px solid var(--myth-red); box-shadow: var(--shadow-card);
@@ -330,7 +318,6 @@
             color: var(--accent-green);
             font-size: 1.5rem;
         }
-        /* Mobile-friendly grid: minmax reduced to 260px */
         .recipe-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -403,7 +390,7 @@
             margin: auto;
             padding: 30px;
             border: 1px solid var(--border-color);
-            width: 90%; /* Fixed width for mobile */
+            width: 90%; 
             max-width: 700px;
             border-radius: 20px;
             position: relative;
@@ -474,33 +461,34 @@
             .hero-image { width: 100%; height: 200px; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
             
             .split-card { flex-direction: column; }
-            .split-card[style*="row-reverse"] { flex-direction: column; } /* Override row-reverse on mobile */
+            .split-card[style*="row-reverse"] { flex-direction: column; } 
             
             .split-img { min-height: 200px; width: 100%; } 
             .split-content { padding: 25px; }
-            
             #malnutrition-img, #ncd-img { min-height: 180px; }
             
+            /* TABS SIDE BY SIDE ON MOBILE */
+            .tabs {
+                gap: 8px; /* Spacing between tabs */
+            }
             .tab-btn { 
-                flex: 1 1 45%; /* Buttons take up half width each */
-                font-size: 0.85rem; 
-                padding: 10px;
-                white-space: normal;
+                flex: 1 1 auto; /* Allow growth */
+                min-width: 100px; /* Min width so text fits */
+                max-width: 48%; /* Ensure 2 fit per row side by side */
+                font-size: 0.8rem; 
+                padding: 8px 5px;
+                white-space: nowrap;
                 text-align: center;
             }
             
-            /* Logo Fix for Mobile */
             .logo-container { max-width: 250px; }
             .logo img { max-height: 60px; }
-            
-            /* Keep toggle button properly positioned */
             .theme-toggle-btn { position: absolute; top: 15px; right: 15px; }
             
             .timeline::before { left: 10px; }
             .timeline-card { margin-left: 30px; padding: 15px; }
             .timeline-card::before { left: -29px; }
             
-            /* Modal Adjustments */
             .modal-content { padding: 20px; width: 95%; margin-top: 20px; margin-bottom: 20px; }
         }
         
@@ -508,7 +496,6 @@
             .section-title { font-size: 1.8rem; }
             .hero-text { padding: 20px; }
             .stat-number { font-size: 2rem; }
-            .tab-btn { flex: 1 1 100%; } /* Stack buttons fully on very small screens */
             .tagline { font-size: 1rem; }
         }
     </style>
@@ -534,7 +521,7 @@
             </div>
             
             <div class="chef-note">
-                <strong>Chef's Note</strong>
+                <strong>Why it's healthy</strong>
                 <span id="modal-note">Some advice here.</span>
             </div>
         </div>
@@ -794,13 +781,6 @@
                 </div>
                 <div class="recipe-card" onclick="openRecipe(5)">
                     <div>
-                        <h3 class="recipe-title">Beef Stir-Fry with Broccoli</h3>
-                        <p class="recipe-meta">Dinner | 25 Mins</p>
-                    </div>
-                    <button class="view-btn">View Recipe</button>
-                </div>
-                <div class="recipe-card" onclick="openRecipe(6)">
-                    <div>
                         <h3 class="recipe-title">Sheet Pan Salmon & Asparagus</h3>
                         <p class="recipe-meta">Dinner | 20 Mins</p>
                     </div>
@@ -810,45 +790,73 @@
 
             <h3 class="category-header">Vegan</h3>
             <div class="recipe-grid">
-                <div class="recipe-card" onclick="openRecipe(7)">
+                <div class="recipe-card" onclick="openRecipe(6)">
                     <div>
                         <h3 class="recipe-title">Chia Seed Pudding</h3>
                         <p class="recipe-meta">Breakfast | 5 Mins Prep</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(8)">
+                <div class="recipe-card" onclick="openRecipe(7)">
                     <div>
                         <h3 class="recipe-title">Tofu Scramble with Turmeric</h3>
                         <p class="recipe-meta">Breakfast | 15 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(9)">
+                <div class="recipe-card" onclick="openRecipe(8)">
                     <div>
                         <h3 class="recipe-title">Mediterranean Falafel Bowl</h3>
                         <p class="recipe-meta">Lunch | 10 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(10)">
+                <div class="recipe-card" onclick="openRecipe(9)">
                     <div>
                         <h3 class="recipe-title">Spicy Lentil Soup</h3>
                         <p class="recipe-meta">Lunch | 35 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(11)">
+                <div class="recipe-card" onclick="openRecipe(10)">
                     <div>
                         <h3 class="recipe-title">Thai Red Curry with Tofu</h3>
                         <p class="recipe-meta">Dinner | 25 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(12)">
+                <div class="recipe-card" onclick="openRecipe(11)">
                     <div>
                         <h3 class="recipe-title">Sweet Potato & Black Bean Chili</h3>
                         <p class="recipe-meta">Dinner | 40 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(12)">
+                    <div>
+                        <h3 class="recipe-title">Besan Chilla</h3>
+                        <p class="recipe-meta">Breakfast | 15 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(13)">
+                    <div>
+                        <h3 class="recipe-title">Apple Nachos</h3>
+                        <p class="recipe-meta">Snack | 10 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                 <div class="recipe-card" onclick="openRecipe(14)">
+                    <div>
+                        <h3 class="recipe-title">Easy Granola</h3>
+                        <p class="recipe-meta">Snack | 30 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                 <div class="recipe-card" onclick="openRecipe(15)">
+                    <div>
+                        <h3 class="recipe-title">Easy Hummus Dip</h3>
+                        <p class="recipe-meta">Snack | 10 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
@@ -856,42 +864,56 @@
 
             <h3 class="category-header">Vegetarian</h3>
             <div class="recipe-grid">
-                <div class="recipe-card" onclick="openRecipe(13)">
+                <div class="recipe-card" onclick="openRecipe(16)">
+                    <div>
+                        <h3 class="recipe-title">Avocado Smash Toast</h3>
+                        <p class="recipe-meta">Breakfast | 10 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                 <div class="recipe-card" onclick="openRecipe(17)">
+                    <div>
+                        <h3 class="recipe-title">Oat Flour Muffins</h3>
+                        <p class="recipe-meta">Snack | 25 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                 <div class="recipe-card" onclick="openRecipe(18)">
+                    <div>
+                        <h3 class="recipe-title">Baked Crispy Potato Salad</h3>
+                        <p class="recipe-meta">Lunch | 30 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                 <div class="recipe-card" onclick="openRecipe(19)">
+                    <div>
+                        <h3 class="recipe-title">Crazy Cucumber Salad</h3>
+                        <p class="recipe-meta">Lunch | 10 Mins</p>
+                    </div>
+                    <button class="view-btn">View Recipe</button>
+                </div>
+                <div class="recipe-card" onclick="openRecipe(20)">
                     <div>
                         <h3 class="recipe-title">Cottage Cheese with Pineapple & Mint</h3>
                         <p class="recipe-meta">Breakfast | 3 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(14)">
-                    <div>
-                        <h3 class="recipe-title">Huevos Rancheros</h3>
-                        <p class="recipe-meta">Breakfast | 15 Mins</p>
-                    </div>
-                    <button class="view-btn">View Recipe</button>
-                </div>
-                <div class="recipe-card" onclick="openRecipe(15)">
+                <div class="recipe-card" onclick="openRecipe(21)">
                     <div>
                         <h3 class="recipe-title">Paneer Tikka Wrap</h3>
                         <p class="recipe-meta">Lunch | 15 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(16)">
+                <div class="recipe-card" onclick="openRecipe(22)">
                     <div>
                         <h3 class="recipe-title">Greek Salad with Feta Block</h3>
                         <p class="recipe-meta">Lunch | 10 Mins</p>
                     </div>
                     <button class="view-btn">View Recipe</button>
                 </div>
-                <div class="recipe-card" onclick="openRecipe(17)">
-                    <div>
-                        <h3 class="recipe-title">Vegetable Stir-Fry with Omelet Ribbons</h3>
-                        <p class="recipe-meta">Dinner | 20 Mins</p>
-                    </div>
-                    <button class="view-btn">View Recipe</button>
-                </div>
-                <div class="recipe-card" onclick="openRecipe(18)">
+                <div class="recipe-card" onclick="openRecipe(23)">
                     <div>
                         <h3 class="recipe-title">Spinach & Ricotta Lasagna Roll-ups</h3>
                         <p class="recipe-meta">Dinner | 40 Mins</p>
@@ -979,7 +1001,7 @@
 
         // --- RECIPE DATA & MODAL LOGIC ---
         const recipes = [
-            // NON-VEG
+            // NON-VEG (Beef Removed)
             {
                 id: 1,
                 title: "Chicken Sausage & Spinach Frittata",
@@ -1014,23 +1036,15 @@
             },
             {
                 id: 5,
-                title: "Beef Stir-Fry with Broccoli",
-                time: "15m Prep | 10m Cook",
-                ingredients: ["200g Beef steak (sliced thin)", "2 cups Broccoli florets", "1 Bell pepper (sliced)", "Sauce: 3 tbsp Soy sauce, 1 tbsp Ginger (grated)", "1 tbsp Honey, 1 tsp Sesame oil"],
-                steps: ["Mix sauce ingredients in a bowl.", "Heat wok with oil on high heat.", "Sear beef strips quickly (2 mins). Remove.", "Add broccoli and peppers. Add splash of water, cover and steam 3 mins.", "Add beef back, pour sauce, and toss for 1 minute."],
-                note: "Freezing the beef for 20 mins before slicing makes it easier to cut into very thin strips."
-            },
-            {
-                id: 6,
                 title: "Sheet Pan Salmon & Asparagus",
                 time: "5m Prep | 15m Cook",
                 ingredients: ["2 Salmon fillets", "1 bunch Asparagus (woody ends snapped)", "1 tbsp Olive oil", "1 Lemon (sliced)", "Garlic powder, Salt, Pepper"],
                 steps: ["Preheat oven to 400°F (200°C).", "Line baking sheet. Place salmon on one side, asparagus on other.", "Drizzle oil, season with garlic powder, salt, pepper.", "Place lemon slices on top of salmon.", "Bake 12-15 mins until salmon flakes."],
                 note: "Rich in Omega-3 fatty acids which are great for brain health. Minimal cleanup required."
             },
-            // VEGAN
+            // VEGAN (Besan Chilla, Apple Nachos, Granola, Hummus added)
             {
-                id: 7,
+                id: 6,
                 title: "Chia Seed Pudding",
                 time: "5m Prep | 4hr Chill",
                 ingredients: ["3 tbsp Chia seeds", "1 cup Almond milk", "1 tsp Maple syrup", "1/2 tsp Vanilla extract", "Toppings: Berries, nuts"],
@@ -1038,7 +1052,7 @@
                 note: "High in fiber. Make 3 jars at once on Sunday night for breakfast Mon-Wed."
             },
             {
-                id: 8,
+                id: 7,
                 title: "Tofu Scramble with Turmeric",
                 time: "15m Total",
                 ingredients: ["1 block Firm Tofu (crumbled)", "1/2 tsp Turmeric", "2 tbsp Nutritional yeast", "1 Tomato (chopped)", "1 cup Spinach", "Salt & Pepper"],
@@ -1046,7 +1060,7 @@
                 note: "Turmeric is anti-inflammatory. Serve with a slice of toasted sourdough."
             },
             {
-                id: 9,
+                id: 8,
                 title: "Mediterranean Falafel Bowl",
                 time: "10m Prep",
                 ingredients: ["3-4 Falafels (store-bought/frozen)", "1/2 cup Hummus", "1/2 cup Cucumber (diced)", "1/2 cup Cherry tomatoes (halved)", "Mixed greens", "Dressing: Tahini, lemon, water"],
@@ -1054,7 +1068,7 @@
                 note: "A great assembly only meal if you buy good quality frozen falafel."
             },
             {
-                id: 10,
+                id: 9,
                 title: "Spicy Lentil Soup",
                 time: "10m Prep | 25m Cook",
                 ingredients: ["1 cup Red lentils (rinsed)", "1 Onion (chopped)", "1 Carrot (chopped)", "3 cups Vegetable broth", "1 tsp Cumin", "1/2 tsp Chili powder"],
@@ -1062,7 +1076,7 @@
                 note: "Red lentils cook very fast and don't need soaking. This soup freezes perfectly."
             },
             {
-                id: 11,
+                id: 10,
                 title: "Thai Red Curry with Tofu",
                 time: "10m Prep | 15m Cook",
                 ingredients: ["1 block Tofu (cubed)", "2 tbsp Red curry paste (vegan)", "1 can Coconut milk", "1 cup Green beans", "1 Red bell pepper (sliced)"],
@@ -1070,16 +1084,80 @@
                 note: "Taste the sauce—if too spicy add sugar; if too bland add salt."
             },
             {
-                id: 12,
+                id: 11,
                 title: "Sweet Potato & Black Bean Chili",
                 time: "10m Prep | 30m Cook",
                 ingredients: ["2 Sweet potatoes (diced small)", "1 can Black beans (drained)", "1 can Diced tomatoes", "1 Onion (diced)", "1 tbsp Chili powder", "1 tsp Cumin"],
                 steps: ["Sauté onion in a large pot.", "Add sweet potatoes and spices. Cook 2 mins.", "Add tomatoes and 1/2 cup water. Boil then simmer.", "Cover and cook 20-25 mins until potatoes soft.", "Stir in black beans and heat through."],
                 note: "Extremely filling due to the fiber combination of beans and potatoes."
             },
-            // VEGETARIAN
+             {
+                id: 12,
+                title: "Besan Chilla",
+                time: "15 Mins",
+                ingredients: ["60g Besan (gram flour)", "60g chopped vegetables (onion, tomato, capsicum, spinach)", "2g Salt, 1g Turmeric, 1g Chili powder", "80-100ml water"],
+                steps: ["Mix besan, spices, and water to form a smooth batter.", "Stir in chopped vegetables.", "Pour batter onto a hot, oiled pan like a pancake.", "Cook on both sides until golden brown."],
+                note: "High in plant protein and iron. Often called a 'Vegetarian Omelet'."
+            },
             {
                 id: 13,
+                title: "Apple Nachos",
+                time: "10 Mins",
+                ingredients: ["1 apple (150g), sliced", "5g Jaggery", "Pinch of cinnamon", "10g nuts or granola"],
+                steps: ["Slice apple thinly.", "Sprinkle cinnamon and jaggery on top.", "Arrange slices on a plate like nachos.", "Drizzle with toppings (nuts/granola).", "(Optional) Bake at 180°C for 10-12 mins for soft apples."],
+                note: "Natural fibre, antioxidants, and healthy fats."
+            },
+            {
+                id: 14,
+                title: "Easy Granola",
+                time: "30 Mins",
+                ingredients: ["200g Rolled oats", "50g Jaggery (melted with 15ml water)", "20ml Coconut oil or ghee", "50g Mixed nuts and seeds", "30g Dark chocolate chips"],
+                steps: ["Toast oats and nuts slightly in a pan.", "Mix melted jaggery with oil. Stir in oats and nuts.", "Bake at 160°C for 20-25 minutes, stirring once.", "Cool completely and mix in chocolate chips."],
+                note: "Iron from jaggery, healthy fats, and fiber."
+            },
+            {
+                id: 15,
+                title: "Easy Hummus Dip",
+                time: "10 Mins",
+                ingredients: ["200g Boiled chickpeas", "15ml Olive oil", "10ml Lemon juice", "15g Tahini or peanut butter", "1 Garlic clove", "Salt to taste"],
+                steps: ["Blend everything until smooth.", "Add 15-30ml water if needed for consistency.", "Enjoy with carrot/cucumber sticks or crackers."],
+                note: "Great source of protein and healthy fats."
+            },
+            // VEGETARIAN (Added new recipes, removed Egg-based ones)
+             {
+                id: 16,
+                title: "Avocado Smash Toast",
+                time: "10 Mins",
+                ingredients: ["1 ripe avocado (120g)", "30g cucumber, 30g tomato, 20g onion (finely chopped)", "Juice of 1/2 lemon (10ml)", "Salt and pepper", "2 slices whole-grain bread", "Optional protein: 50g paneer / tofu / chickpeas"],
+                steps: ["Mash avocado with lemon juice, salt, and pepper.", "Mix in chopped vegetables.", "Spread on toast and top with your chosen protein."],
+                note: "High in healthy fats, fibre, and vitamins."
+            },
+            {
+                id: 17,
+                title: "Oat Flour Muffins",
+                time: "25 Mins",
+                ingredients: ["60g Oat flour", "40g Maida", "3g Baking powder", "40g Jaggery", "60ml Milk or Yogurt", "20ml Melted butter", "20g Curd"],
+                steps: ["Mix butter and jaggery well.", "Add curd. Sift in flours and baking powder.", "Mix until combined.", "Pour into muffin moulds.", "Bake at 180°C for 15-18 minutes."],
+                note: "Oats add fibre and slow energy."
+            },
+            {
+                id: 18,
+                title: "Baked Crispy Potato Salad",
+                time: "30 Mins",
+                ingredients: ["300g Potatoes (cubed)", "5ml Olive oil", "Salt and pepper", "30g Cottage cheese (paneer)", "30g Yogurt", "5ml Lemon juice or mustard"],
+                steps: ["Boil potatoes, brush with oil, season.", "Bake at 190°C for 25 mins until crisp.", "Blend cottage cheese, yogurt, and lemon/mustard for dressing.", "Combine dressing with potatoes and garnish with herbs."],
+                note: "Baked, not fried; good protein and calcium."
+            },
+            {
+                id: 19,
+                title: "Crazy Cucumber Salad",
+                time: "10 Mins",
+                ingredients: ["150g Cucumber (thinly sliced)", "1 Red onion diced", "Diced tomato", "30g Paneer", "20g Cream cheese", "5ml Soy sauce", "5ml Lemon juice", "Salt & Pepper"],
+                steps: ["Blend paneer, cream cheese, soy sauce, lemon juice, salt, pepper into a creamy dressing.", "Toss cucumber, onion, and tomato in the dressing."],
+                note: "Hydrating, protein and calcium-rich from the dairy blend."
+            },
+            {
+                id: 20,
                 title: "Cottage Cheese with Pineapple & Mint",
                 time: "3m Total",
                 ingredients: ["1 cup Cottage cheese", "1/2 cup Fresh pineapple chunks", "1 tsp Chia seeds", "Fresh Mint leaves (chopped)"],
@@ -1087,15 +1165,7 @@
                 note: "Very high protein (approx 25g) without any cooking."
             },
             {
-                id: 14,
-                title: "Huevos Rancheros",
-                time: "15m Total",
-                ingredients: ["2 Corn tortillas", "2 Eggs", "1/2 cup Black beans (warmed)", "1/2 cup Salsa", "1/4 Avocado (sliced)", "Feta cheese"],
-                steps: ["Lightly toast tortillas in dry pan.", "Fry eggs (sunny side up).", "Spread beans on tortillas.", "Top with egg, salsa, avocado, and cheese."],
-                note: "Savory and satisfying. Corn tortillas are usually lower calorie than flour ones."
-            },
-            {
-                id: 15,
+                id: 21,
                 title: "Paneer Tikka Wrap",
                 time: "15m Total",
                 ingredients: ["100g Paneer (cubed)", "1 tbsp Tandoori masala", "1 Whole wheat tortilla/roti", "Sliced onions and peppers", "1 tbsp Mint yogurt chutney"],
@@ -1103,7 +1173,7 @@
                 note: "If you don't have paste, mix yogurt, chili powder, turmeric, and garam masala."
             },
             {
-                id: 16,
+                id: 22,
                 title: "Greek Salad with Feta Block",
                 time: "10m Total",
                 ingredients: ["1 Cucumber (chopped)", "2 Tomatoes (chopped)", "1/2 Red onion (sliced thin)", "1/3 cup Kalamata olives", "1 slice Feta cheese", "Olive oil & Oregano"],
@@ -1111,15 +1181,7 @@
                 note: "The juice at the bottom is 'liquid gold'—dip bread in it!"
             },
             {
-                id: 17,
-                title: "Vegetable Stir-Fry with Omelet Ribbons",
-                time: "20m Total",
-                ingredients: ["2 Eggs (beaten)", "2 cups Mixed veggies", "2 cups Cooked Rice (day-old)", "1 tbsp Soy Sauce", "1 tsp Sesame oil", "Green onions"],
-                steps: ["Make a thin omelet in pan. Remove, roll, and slice into ribbons.", "Stir-fry veggies on high heat 4 mins.", "Add rice and break up clumps.", "Add sauces. Stir in egg ribbons at the end."],
-                note: "Using day-old cold rice prevents the dish from becoming mushy."
-            },
-            {
-                id: 18,
+                id: 23,
                 title: "Spinach & Ricotta Lasagna Roll-ups",
                 time: "15m Prep | 25m Cook",
                 ingredients: ["6 Lasagna noodles (boiled)", "1 cup Ricotta cheese", "1 cup Spinach (thawed/dried)", "1 cup Marinara sauce", "1/2 cup Mozzarella cheese"],
